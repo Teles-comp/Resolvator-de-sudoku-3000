@@ -10,4 +10,10 @@ O programa até agora resolve sudokus de nível fácil e médio, só botei essa 
 ver o progresso a partir daki (e poder apagar função de teste do programa, mas deixando ela aki pra ver o progresso)
 
 
+
+Pra facilitar a visualização do código copie ele pro NetBeans (que é a IDE que tô usando) e de   "ctrl" + " - " (<-- isso é um menos)
+que é pra colapsar todas as funções e você poder abrir só as que quiser ver
+
+
+
 Mais informações: 4002-8922 (ou vá ler a porra do código que tá comentado td bonitinho)
