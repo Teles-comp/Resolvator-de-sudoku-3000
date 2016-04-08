@@ -12,7 +12,7 @@ ver o progresso a partir daki (e poder apagar função de teste do programa, mas
 
 
 Pra facilitar a visualização do código copie ele pro NetBeans (que é a IDE que tô usando) e de   "ctrl" + " - " (<-- isso é um menos)
-que é pra colapsar todas as funções e você poder abrir só as que quiser ver
+que é pra colapsar todas as funções e você poder abrir só as que quiser ver.
 
 
 
