@@ -6,6 +6,8 @@ de desenvolver um resolvedor de adivinha só? você não vai acreditar, isso mes
 
 
 
-O programa até agora resolve sudokus de nível fácil e médio, só botei essa porr-..... esse programa no github pq eu quero
+O programa até agora resolve sudokus de nível fácil e médio, só botei essa ~porr~..... esse programa no github pq eu quero
 ver o progresso a partir daki (e poder apagar função de teste do programa, mas deixando ela aki pra ver o progresso)
+
+
 Mais informações: 4002-8922 (ou vá ler a porra do código que tá comentado td bonitinho)
