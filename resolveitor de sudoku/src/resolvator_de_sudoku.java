@@ -679,7 +679,7 @@ class solve {
     void iniciar_teste_4() {
         System.out.print("\n"
                 + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-"
-                + "\n\nTESTE 3\n(nivel difícil)\n");
+                + "\n\nTESTE 4\n(nivel muito difícil)\n");
         int l;
         int c;
         int val;
@@ -701,30 +701,3 @@ class solve {
         System.out.print("\nContinuar?\n");
         resp = sc_c.next().charAt(0);
     }
-    
-    void iniciar_teste_5() {
-        System.out.print("\n"
-                + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-"
-                + "\n\nTESTE 3\n(nivel difícil)\n");
-        int l;
-        int c;
-        int val;
-        int[] sudok = {};
-        for (int i = 0; i < sudok.length; i++) {
-            val = sudok[i];
-            l = val / 100;
-            c = (val - (l * 100)) / 10;
-            val = (val - (l * 100)) - (c * 10);
-            l = l - 1;
-            c = c - 1;
-            questão[l][c] = val;
-        }
-        this.solução = this.questão;
-        exibir_questão();
-        Scanner sc_c = new Scanner(System.in);
-
-        //resp = sc_c.next().charAt(0);
-        System.out.print("\nContinuar?\n");
-        resp = sc_c.next().charAt(0);
-    }
-}
