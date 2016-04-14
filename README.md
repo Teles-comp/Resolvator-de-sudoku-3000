@@ -6,8 +6,9 @@ de desenvolver um resolvedor de adivinha só? você não vai acreditar, isso mes
 
 
 
-O programa até agora resolve sudokus de nível fácil e médio, só botei essa ~porr~..... esse programa no github pq eu quero
-ver o progresso a partir daki (e poder apagar função de teste do programa, mas deixando ela aki pra ver o progresso)
+O programa já resolve sudokus de nível fácil ,médio, difícil e muito difícil (segundo uma revista de sudoku aí que eu comprei ¯\_(ツ)_/¯)
+
+Botei essa ~porr~..... esse programa no github pq eu quero ver o progresso a partir daki (e poder apagar função de teste do programa, mas deixando ela aki pra ver o progresso)
 
 
 
