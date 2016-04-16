@@ -19,7 +19,7 @@ public class Sudoku extends javax.swing.JFrame {
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("imagens/sudoku_dificil.jpg")));
         this.setLocationRelativeTo(null);
         gerar();
-        
+
     }
 
     //aki eh o metodo em que tu pega os numeros da interface
@@ -2467,11 +2467,9 @@ public class Sudoku extends javax.swing.JFrame {
                 for (int k = 1; k < 10; k++) {
                     if (getSudoku(i, j) == 0) {
                     } else if (j == k) {
-                    } else {
-                        if (getSudoku(i, j) == getSudoku(i, k)) {
-                            linha = i;
-                            coluna = j;
-                        }
+                    } else if (getSudoku(i, j) == getSudoku(i, k)) {
+                        linha = i;
+                        coluna = j;
                     }
                 }
             }
@@ -2485,11 +2483,9 @@ public class Sudoku extends javax.swing.JFrame {
                 for (int k = 1; k < 10; k++) {
                     if (getSudoku(j, i) == 0) {
                     } else if (j == k) {
-                    } else {
-                        if (getSudoku(j, i) == getSudoku(k, i)) {
-                            linha = j;
-                            coluna = i;
-                        }
+                    } else if (getSudoku(j, i) == getSudoku(k, i)) {
+                        linha = j;
+                        coluna = i;
                     }
                 }
             }
@@ -2505,36 +2501,34 @@ public class Sudoku extends javax.swing.JFrame {
                     for (int l = 0; l < 9; l++) {
                         if (k == l) {
                         } else if (vetor[k] == 0) {
-                        } else {
-                            if (vetor[k] == vetor[l]) {
-                                if (k == 0) {
-                                    linha = i;
-                                    coluna = j;
-                                } else if (k == 1) {
-                                    linha = i;
-                                    coluna = j + 1;
-                                } else if (k == 2) {
-                                    linha = i;
-                                    coluna = j + 2;
-                                } else if (k == 3) {
-                                    linha = i + 1;
-                                    coluna = j;
-                                } else if (k == 4) {
-                                    linha = i + 1;
-                                    coluna = j + 1;
-                                } else if (k == 5) {
-                                    linha = i + 1;
-                                    coluna = j + 2;
-                                } else if (k == 6) {
-                                    linha = i + 2;
-                                    coluna = j;
-                                } else if (k == 7) {
-                                    linha = i + 2;
-                                    coluna = j + 1;
-                                } else if (k == 8) {
-                                    linha = i + 2;
-                                    coluna = j + 2;
-                                }
+                        } else if (vetor[k] == vetor[l]) {
+                            if (k == 0) {
+                                linha = i;
+                                coluna = j;
+                            } else if (k == 1) {
+                                linha = i;
+                                coluna = j + 1;
+                            } else if (k == 2) {
+                                linha = i;
+                                coluna = j + 2;
+                            } else if (k == 3) {
+                                linha = i + 1;
+                                coluna = j;
+                            } else if (k == 4) {
+                                linha = i + 1;
+                                coluna = j + 1;
+                            } else if (k == 5) {
+                                linha = i + 1;
+                                coluna = j + 2;
+                            } else if (k == 6) {
+                                linha = i + 2;
+                                coluna = j;
+                            } else if (k == 7) {
+                                linha = i + 2;
+                                coluna = j + 1;
+                            } else if (k == 8) {
+                                linha = i + 2;
+                                coluna = j + 2;
                             }
                         }
                     }
@@ -2577,11 +2571,31 @@ public class Sudoku extends javax.swing.JFrame {
         }
     }
 
-    //aki eh onde entra o teu codigo
-    public void resolver() {
-
+    //
+    //
+    //MÉTODOS DO RESOLVATOR DE SUDOKU
+    //
+    //transfere o sudoku da interface para as matrizes do resolvator de sudoku
+    void transf(solve a) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                a.questão[i][j] = getSudoku((i + 1), (j + 1));
+                a.solução[i][j] = getSudoku((i + 1), (j + 1));
+            }
+        }
     }
 
+    public void resolver() {
+        solve sud = new solve();
+        sud.zerar();
+        transf(sud);
+        sud.tentar_resolver();
+    }
+
+    //
+    //
+    //
+    //
     //codigo que faz a soluçao e o campo do sudoku
     public void doSudoku() {
         for (int q = 0; q < 9; q++) {                //guarda a soluçao do sudoku
@@ -2757,7 +2771,7 @@ public class Sudoku extends javax.swing.JFrame {
             transmutar();
             doSudoku();
         }
-    //mesmo estilo do de cima so que com aleatoridade
+        //mesmo estilo do de cima so que com aleatoridade
 
         //bloqueia as caxinhas do sudoku onde tem numero
         for (int i = 1; i < 10; i++) {
@@ -2769,7 +2783,7 @@ public class Sudoku extends javax.swing.JFrame {
                 }
             }
         }
-    //bloqueia as caxinhas do sudoku onde tem numero
+        //bloqueia as caxinhas do sudoku onde tem numero
     }
 
     //chama o metodo inserir
@@ -2779,11 +2793,7 @@ public class Sudoku extends javax.swing.JFrame {
 
     //se tiver algo na matriz solucao, chama o metodo solucao, se nao chama o metodo resolver
     private void SOLUCAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SOLUCAOActionPerformed
-        if (deducao != 0) {
-            resolver();
-        } else {
-            solucao();
-        }
+        resolver();
     }//GEN-LAST:event_SOLUCAOActionPerformed
 
     //chama o metodo checar e analisa se voce ganhou o jogo
@@ -2801,7 +2811,7 @@ public class Sudoku extends javax.swing.JFrame {
             if (soma == 405) {
                 JOptionPane.showMessageDialog(null, "Parabéns, você completou o sudoku");
             } else {
-                JOptionPane.showMessageDialog(null, "Tudo certo até o momento" );
+                JOptionPane.showMessageDialog(null, "Tudo certo até o momento");
             }
         }
     }//GEN-LAST:event_CHECARActionPerformed
