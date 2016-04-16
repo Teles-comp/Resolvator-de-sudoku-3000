@@ -156,7 +156,7 @@ class solve {
                 if (solução[i][j] == 0) {
                     sol += "  ..  ";
                 } else {
-                    sol = sol +"  " +solução[i][j] +"  ";
+                    sol = sol + "  " + solução[i][j] + "  ";
                 }
                 if (j == 8) {
                     sol += "\n";
@@ -598,13 +598,21 @@ class solve {
         if (result) {
             exibir_solução();
         } else {
+            JOptionPane.showMessageDialog(null, ""
+                    + "PPPPP         EEEEEEEEE      RRRRR         DDDD            IIII\n"
+                    + "PP   PPP      EEEEEEEEE      RR   RRR      DD  DD          IIII\n"
+                    + "PP      PP      EE                      RR      RR      DD    DD        IIII\n"
+                    + "PP   PPP      EEEEE               RR   RRR       DD      DD      IIII\n"
+                    + "PPPPP         EEEEE               RRRR             DD      DD      IIII\n"
+                    + "PP                 EE                      RR  RR           DD    DD        IIII\n"
+                    + "PP                 EEEEEEEE        RR    RR         DD  DD          IIII\n"
+                    + "PP                 EEEEEEEE        RR      RR       DDDD            IIII\n");
             JOptionPane.showMessageDialog(null, "ATENÇÃO:\n"
                     + "é provável que o seu sudoku não possua\n"
                     + " um solução ou possua mais de uma solução\n"
                     + "possível, de modo que ele não pôde ser\n"
                     + "resolvido até o final\n\n"
                     + ".                <!!!>\n"
-                    + ".              PERDI\n"
                     + ".   Mals, não consegui\n"
                     + ".Mas cheguei até aqui ó:");
             exibir_solução();
@@ -699,37 +707,11 @@ class solve {
     void iniciar_teste_4() {
         System.out.print("\n"
                 + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-"
-                + "\n\nTESTE 3\n(nivel difícil)\n");
+                + "\n\nTESTE 3\n(nivel  muito difícil)\n");
         int l;
         int c;
         int val;
         int[] sudok = {111, 139, 174, 195, 342, 354, 368, 436, 452, 478, 532, 544, 563, 576, 633, 651, 677, 745, 756, 769, 914, 938, 979, 993};
-        for (int i = 0; i < sudok.length; i++) {
-            val = sudok[i];
-            l = val / 100;
-            c = (val - (l * 100)) / 10;
-            val = (val - (l * 100)) - (c * 10);
-            l = l - 1;
-            c = c - 1;
-            questão[l][c] = val;
-        }
-        this.solução = this.questão;
-        exibir_questão();
-        Scanner sc_c = new Scanner(System.in);
-
-        //resp = sc_c.next().charAt(0);
-        System.out.print("\nContinuar?\n");
-        resp = sc_c.next().charAt(0);
-    }
-
-    void iniciar_teste_5() {
-        System.out.print("\n"
-                + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-"
-                + "\n\nTESTE 3\n(nivel difícil)\n");
-        int l;
-        int c;
-        int val;
-        int[] sudok = {};
         for (int i = 0; i < sudok.length; i++) {
             val = sudok[i];
             l = val / 100;
