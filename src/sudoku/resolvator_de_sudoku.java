@@ -558,7 +558,7 @@ class solve {
         }
     }
 
-    //aplica metodos até agora
+    //tenta resolver o sudoku aplicando os metodos até agora
     void tentar_resolver() {
         int x = 0;
         int verif[][] = new int[9][9];

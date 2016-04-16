@@ -2575,12 +2575,14 @@ public class Sudoku extends javax.swing.JFrame {
     //
     //MÉTODOS DO RESOLVATOR DE SUDOKU
     //
-    //transfere o sudoku da interface para as matrizes do resolvator de sudoku
+    int[][] sud_interf = new int[9][9];
+
+    //transfere o sudoku da interface para as matrizes do resolvator de sudoku    
     void transf(solve a) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                a.questão[i][j] = getSudoku((i + 1), (j + 1));
-                a.solução[i][j] = getSudoku((i + 1), (j + 1));
+                a.questão[i][j] = sud_interf[i][j];
+                a.solução[i][j] = sud_interf[i][j];
             }
         }
     }
@@ -2798,20 +2800,31 @@ public class Sudoku extends javax.swing.JFrame {
 
     //chama o metodo checar e analisa se voce ganhou o jogo
     private void CHECARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CHECARActionPerformed
-        checar();
-        if (linha != 0 || coluna != 0) {
-            JOptionPane.showMessageDialog(null, "Algum elemento errado na linha " + linha + " e coluna " + coluna);
-        } else {
-            double soma = 0;
-            for (int i = 1; i < 10; i++) {
-                for (int j = 1; j < 10; j++) {
-                    soma += getSudoku(i, j);
+        boolean vazio = false;
+
+        for (int l = 1; l < 10; l++) {
+            for (int c = 1; c < 10; c++) {
+                if (getSudoku(l, c) == 0) {
+                    vazio = true;
+                    l = 10;
+                    c = 10;
                 }
             }
-            if (soma == 405) {
-                JOptionPane.showMessageDialog(null, "Parabéns, você completou o sudoku");
+        }
+
+        if (vazio) {
+            checar();
+            if (linha != 0 || coluna != 0) {
+                JOptionPane.showMessageDialog(null, "Seu sudoku ainda não está completo !\n\ndica: algum elemento está incorreto");
             } else {
-                JOptionPane.showMessageDialog(null, "Tudo certo até o momento");
+                JOptionPane.showMessageDialog(null, "Seu sudoku ainda não está completo !\n\ndica: tudo ok até o momento");
+            }
+        } else {
+            checar();
+            if (linha != 0 || coluna != 0) {
+                JOptionPane.showMessageDialog(null, "Algum elemento está incorreto");
+            } else {
+                JOptionPane.showMessageDialog(null, "Parabéns, você completou o sudoku\n\nYAAAAYY");
             }
         }
     }//GEN-LAST:event_CHECARActionPerformed
@@ -2821,6 +2834,11 @@ public class Sudoku extends javax.swing.JFrame {
         deducao = 0;
         limpar();
         gerar();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                sud_interf[i][j] = getSudoku((i + 1), (j + 1));
+            }
+        }
     }//GEN-LAST:event_CRIARActionPerformed
 
     //chama o metodo limpar
@@ -2829,6 +2847,7 @@ public class Sudoku extends javax.swing.JFrame {
         int x = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja limpar\n todo o sudoku para inserir um novo?");
         if (x == 0) {
             limpar();
+            JOptionPane.showMessageDialog(null, "Quando terminar de inserir clique em \n\"Inserir sudoku\" para salvar sua inserção");
         }
     }//GEN-LAST:event_LIMPARActionPerformed
 
