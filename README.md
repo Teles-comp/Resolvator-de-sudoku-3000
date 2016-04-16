@@ -14,7 +14,10 @@ Botei essa ~porr~..... esse programa no github pq eu quero ver o progresso a par
 
 O código está em resolveitor de resolveitor de sudoku/src/resolvator_de_sudoku.java
 
-Para rodar o código baixe a pasta resolveitor de sudoku e se você estiver usando a IDE NetBeans (que é a que eu tô usando) pra facilitar a visualização do código dê "ctrl" + "shift" + " - " (<-- isso é um menos) que é pra colapsar todas as funções e você poder abrir só as que quiser ver.
+Para rodar o código faça "DOWNLOAD ZIP" do repositório, extraia os arquivos e coloque a pasta 'src' e a pasta 'build' dentro da pasta 'resolveitor de sudoku'
+
+
+Se você estiver usando a IDE NetBeans (que é a que eu tô usando) pra facilitar a visualização do código dê "ctrl" + "shift" + " - " (<-- isso é um menos) que é pra colapsar todas as funções e você poder abrir só as que quiser ver.
 
 
 
