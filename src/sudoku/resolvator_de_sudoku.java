@@ -275,6 +275,7 @@ class solve {
         return bloco;
     }
 
+    //
     /*
     Numeração dos blocos:
         1 | 2 | 3
@@ -617,6 +618,45 @@ class solve {
                     + ".Mas cheguei até aqui ó:");
             exibir_solução();
         }
+    }
+    
+    boolean verif_resol() {
+        int x = 0;
+        int verif[][] = new int[9][9];
+        boolean result = true;
+        verificar_imposs();
+        while (x != 81) {
+            x = 0;
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    verif[i][j] = solução[i][j];
+                }
+            }
+            insert_p_bloco();
+            insert_p_linha();
+            insert_p_coluna();
+            criar_fantasma();
+            insert_p_bloco();
+            aux_fantasma();
+            insert_p_bloco();
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (solução[i][j] == verif[i][j]) {
+                        x++;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (solução[i][j] == 0) {
+                    result = false;
+                    i = 10;
+                    j = 10;
+                }
+            }
+        }
+        return result;
     }
 
     //
