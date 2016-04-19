@@ -2594,7 +2594,6 @@ public class Sudoku extends javax.swing.JFrame {
     //
     int backup_teste[][] = new int[9][9];
 
-    //*
     //faz o campo do sudoku
     public void doSudoku() {
         for (int i = 0; i < 9; i++) {
@@ -2643,85 +2642,6 @@ public class Sudoku extends javax.swing.JFrame {
                 }
             }
         } while (refazer);
-    }
-    //*/
-
-    /*
-    //faz o campo do sudoku
-    public void doSudoku() {
-            //limpa alguns campos do tabuleiro para poder fazer o jogo
-            for (int q = 0; q < 5; q++) {
-                setSudoku(numeroMenor(), numeroMenor(), 0);
-                setSudoku(numeroMenor(), numeroMenor() + 3, 0);
-                setSudoku(numeroMenor(), numeroMenor() + 6, 0);
-                setSudoku(numeroMenor() + 3, numeroMenor(), 0);
-                setSudoku(numeroMenor() + 3, numeroMenor() + 3, 0);
-                setSudoku(numeroMenor() + 3, numeroMenor() + 6, 0);
-                setSudoku(numeroMenor() + 6, numeroMenor(), 0);
-                setSudoku(numeroMenor() + 6, numeroMenor() + 3, 0);
-                setSudoku(numeroMenor() + 6, numeroMenor() + 6, 0);
-            }
-    }
-    //*/
-    //codigo que muda linhas e colunas de lugar
-    public void transmutar() {
-        int[] linha1 = new int[9];              //ajuda para transmutaçao de linha e coluna
-        int[] linha2 = new int[9];
-        int a, b, c, d, e, f = 0;
-        a = numeroMenor();
-        b = numeroMenor();
-        c = numeroMenor();
-        d = numeroMenor();
-        e = numeroMenor();
-        f = numeroMenor();
-        for (int i = 0; i < 9; i++) {                //1 quadrante linha
-            linha1[i] = getSudoku(a, i + 1);
-            linha2[i] = getSudoku(b, i + 1);
-        }
-        for (int i = 0; i < 9; i++) {
-            setSudoku(b, i + 1, linha1[i]);
-            setSudoku(a, i + 1, linha2[i]);
-        }
-        for (int i = 0; i < 9; i++) {                //2 quadrante linha
-            linha1[i] = getSudoku(c + 3, i + 1);
-            linha2[i] = getSudoku(d + 3, i + 1);
-        }
-        for (int i = 0; i < 9; i++) {
-            setSudoku(d + 3, i + 1, linha1[i]);
-            setSudoku(c + 3, i + 1, linha2[i]);
-        }
-        for (int i = 0; i < 9; i++) {                  //3 quadrante linha
-            linha1[i] = getSudoku(e + 6, i + 1);
-            linha2[i] = getSudoku(f + 6, i + 1);
-        }
-        for (int i = 0; i < 9; i++) {
-            setSudoku(f + 6, i + 1, linha1[i]);
-            setSudoku(e + 6, i + 1, linha2[i]);
-        }
-        for (int j = 0; j < 9; j++) {                     //1 quadrante coluna
-            linha1[j] = getSudoku(j + 1, a);
-            linha2[j] = getSudoku(j + 1, b);
-        }
-        for (int j = 0; j < 9; j++) {
-            setSudoku(j + 1, b, linha1[j]);
-            setSudoku(j + 1, a, linha2[j]);
-        }
-        for (int j = 0; j < 9; j++) {                    //2 quadrante coluna
-            linha1[j] = getSudoku(j + 1, c + 3);
-            linha2[j] = getSudoku(j + 1, d + 3);
-        }
-        for (int j = 0; j < 9; j++) {
-            setSudoku(j + 1, d + 3, linha1[j]);
-            setSudoku(j + 1, c + 3, linha2[j]);
-        }
-        for (int j = 0; j < 9; j++) {                    //3 quadrante coluna
-            linha1[j] = getSudoku(j + 1, e + 6);
-            linha2[j] = getSudoku(j + 1, f + 6);
-        }
-        for (int j = 0; j < 9; j++) {
-            setSudoku(j + 1, f + 6, linha1[j]);
-            setSudoku(j + 1, e + 6, linha2[j]);
-        }
     }
 
     public void debug() {
