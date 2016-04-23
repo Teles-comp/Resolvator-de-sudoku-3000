@@ -6,9 +6,9 @@ de desenvolver um resolvedor de adivinha só? você não vai acreditar, isso mes
 
 
 
-O programa já resolve sudokus de nível fácil ,médio, difícil e muito difícil (segundo uma revista de sudoku aí que eu comprei) ¯\_(ツ)_/¯)
+O programa já resolve sudokus de nível fácil ,médio, difícil e muito difícil ~~segundo uma revista de sudoku aí que eu comprei~~ ¯\_(ツ)_/¯)
 
-Botei essa ~porr~..... esse programa no github pq eu quero ver o progresso a partir daki (e poder apagar função de teste do programa, mas deixando ela aki pra ver o progresso)
+Botei essa ~~porr~~ esse programa no github pq eu quero ver o progresso a partir daki (e poder apagar função de teste do programa, mas deixando ela aki pra ver o progresso)
 
 
 
@@ -21,6 +21,6 @@ Se você estiver usando a IDE NetBeans (que é a que eu tô usando) pra facilita
 
 
 
-Mais informações: 4002-8922 (ou vá ler a porra do código que tá comentado td bonitinho)
+Mais informações: 4002-8922 ~~ou vá ler a porra do código que tá comentado td bonitinho~~
 
 19/04/2016 - AGORA JÁ TEM A INTERFACE, TÁ TD PRONTO SSAPOHAAAA
