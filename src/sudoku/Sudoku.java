@@ -10,6 +10,7 @@ public class Sudoku extends javax.swing.JFrame {
     private int deducao = 0;
     private int linha = 0;
     private int coluna = 0;
+    private int dificuldade = 1;
 
     //aki eh onde fica as coisas do que acontece na primeira vez que abre o programa
     public Sudoku() {
@@ -1033,6 +1034,7 @@ public class Sudoku extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        Dificuldade = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane37 = new javax.swing.JScrollPane();
@@ -1263,10 +1265,21 @@ public class Sudoku extends javax.swing.JFrame {
 
         jLabel13.setText("Gerar Sudoku");
 
+        Dificuldade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fácil", "Médio", "Difícil" }));
+        Dificuldade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DificuldadeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(71, 71, 71))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1275,28 +1288,28 @@ public class Sudoku extends javax.swing.JFrame {
                     .addComponent(SOLUCAO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CRIAR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(INSERIR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Dificuldade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(55, 55, 55))
+                                .addComponent(jLabel2)
+                                .addGap(73, 73, 73))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addGap(69, 69, 69))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(71, 71, 71))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(71, 71, 71))
+                                .addGap(69, 69, 69))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel13)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Dificuldade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CRIAR)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
@@ -1312,7 +1325,7 @@ public class Sudoku extends javax.swing.JFrame {
                 .addComponent(LIMPAR)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(INSERIR)
-                .addGap(62, 62, 62))
+                .addGap(32, 32, 32))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -2416,7 +2429,7 @@ public class Sudoku extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -2595,7 +2608,7 @@ public class Sudoku extends javax.swing.JFrame {
     int backup_teste[][] = new int[9][9];
 
     //faz o campo do sudoku
-    public void doSudoku() {
+    public void doSudoku(int dificuldade) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 backup_teste[i][j] = getSudoku((i + 1), (j + 1));
@@ -2608,7 +2621,7 @@ public class Sudoku extends javax.swing.JFrame {
 
         do {
             //limpa alguns campos do tabuleiro para poder fazer o jogo
-            for (int q = 0; q < 5; q++) {
+            for (int q = 0; q < dificuldade + 4; q++) {
                 setSudoku(numeroMenor(), numeroMenor(), 0);
                 setSudoku(numeroMenor(), numeroMenor() + 3, 0);
                 setSudoku(numeroMenor(), numeroMenor() + 6, 0);
@@ -2727,7 +2740,7 @@ public class Sudoku extends javax.swing.JFrame {
         }
         //debug_show();     //se quiser ver apenas o resultado final
 
-        doSudoku();
+        doSudoku(dificuldade);
 
         //bloqueia as caxinhas do sudoku onde tem numero
         for (int i = 1; i < 10; i++) {
@@ -3710,6 +3723,18 @@ public class Sudoku extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_M99FocusLost
 
+    private void DificuldadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DificuldadeActionPerformed
+        if(Dificuldade.getSelectedItem() == "Fácil"){
+            dificuldade = 1;   
+        }
+        if(Dificuldade.getSelectedItem() == "Médio"){
+            dificuldade = 2;
+        }
+        if(Dificuldade.getSelectedItem() == "Difícil"){
+            dificuldade = 3;
+        }
+    }//GEN-LAST:event_DificuldadeActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -3722,6 +3747,7 @@ public class Sudoku extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CHECAR;
     private javax.swing.JButton CRIAR;
+    private javax.swing.JComboBox Dificuldade;
     private javax.swing.JButton INSERIR;
     private javax.swing.JButton LIMPAR;
     private final javax.swing.JTextPane M11 = new javax.swing.JTextPane();
