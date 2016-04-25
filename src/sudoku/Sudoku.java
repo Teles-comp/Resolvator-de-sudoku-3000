@@ -2640,13 +2640,13 @@ public class Sudoku extends javax.swing.JFrame {
             }
             sud.zerar();
             transf(sud);
-
-            debug_show();
             refazer = false;
             if (sud.verif_resol()) {
                 refazer = false;
             } else {
                 refazer = true;
+                System.out.print("\nInsolúvel: ");
+                debug();
 
                 for (int i = 0; i < 9; i++) {
                     for (int j = 0; j < 9; j++) {
@@ -2655,6 +2655,8 @@ public class Sudoku extends javax.swing.JFrame {
                 }
             }
         } while (refazer);
+
+        debug_show();
     }
 
     public void debug() {
@@ -2711,6 +2713,7 @@ public class Sudoku extends javax.swing.JFrame {
     //aki eh onde entra o meu codigo
     public void gerar() {
         for (int l = 1; l < 10; l++) {
+            int cont_sup = 0;
 
             boolean l_ok = false;
             while (l_ok == false) {
@@ -2731,7 +2734,27 @@ public class Sudoku extends javax.swing.JFrame {
                             c = 10;
                         }
 
+                        if ((cont_sup == 300) && (l == 6 || l == 9)) {
+                            reset_linha(l - 2);
+                            reset_linha(l - 1);
+                            reset_linha(l);
+                            l_ok = true;
+                            checar();
+                            c = 10;
+                            l = l - 3;
+                        }
+
+                        if ((cont_sup == 300) && (l == 8)) {
+                            reset_linha(l - 1);
+                            reset_linha(l);
+                            l_ok = true;
+                            checar();
+                            c = 10;
+                            l = l - 3;
+                        }
+
                         cont++;
+                        cont_sup++;
                         debug();  //fica mostrando o progresso
                         //debug_show();  //fica mostrando o sudoku
                     }
@@ -3724,13 +3747,13 @@ public class Sudoku extends javax.swing.JFrame {
     }//GEN-LAST:event_M99FocusLost
 
     private void DificuldadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DificuldadeActionPerformed
-        if(Dificuldade.getSelectedItem() == "Fácil"){
-            dificuldade = 1;   
+        if (Dificuldade.getSelectedItem() == "Fácil") {
+            dificuldade = 1;
         }
-        if(Dificuldade.getSelectedItem() == "Médio"){
+        if (Dificuldade.getSelectedItem() == "Médio") {
             dificuldade = 2;
         }
-        if(Dificuldade.getSelectedItem() == "Difícil"){
+        if (Dificuldade.getSelectedItem() == "Difícil") {
             dificuldade = 3;
         }
     }//GEN-LAST:event_DificuldadeActionPerformed
