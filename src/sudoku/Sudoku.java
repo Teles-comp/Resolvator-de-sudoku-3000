@@ -2563,13 +2563,6 @@ public class Sudoku extends javax.swing.JFrame {
         checaBlocos();
     }
 
-    //gera um numero aleaotio entre 1 e 9
-    public int numero() {
-        Random rand = new Random();
-        int numero = rand.nextInt(9);
-        return numero + 1;
-    }
-
     //gera um numero aleatorio entre 1 e 3
     public int numeroMenor() {
         Random rand = new Random();
@@ -2607,8 +2600,44 @@ public class Sudoku extends javax.swing.JFrame {
     //
     int backup_teste[][] = new int[9][9];
 
+    //gera um numero aleaotio possível em certo lugar
+    public int numero(int linha, int coluna) {
+        solve sud = new solve();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                sud_interf[i][j] = getSudoku((i + 1), (j + 1));
+            }
+        }
+        sud.zerar();
+        transf(sud);
+
+        int[] valores = new int[9];
+        int[] possíveis;
+        int n = 0;
+        for (int x = 1; x < 10; x++) {
+            if (sud.poss(x, linha, coluna)) {
+                valores[n] = x;
+                n++;
+            }
+        }
+
+        possíveis = new int[n];
+
+        Random rand = new Random();
+        if (n != 0) {
+            for (int y = 0; y < n; y++) {
+                possíveis[y] = valores[y];
+            }
+
+            int numero = rand.nextInt(n);
+            return possíveis[numero];
+        } else {
+            return 0;
+        }
+    }
+
     //faz o campo do sudoku
-    public void doSudoku(int dificuldade) {
+    public void doSudoku() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 backup_teste[i][j] = getSudoku((i + 1), (j + 1));
@@ -2621,7 +2650,7 @@ public class Sudoku extends javax.swing.JFrame {
 
         do {
             //limpa alguns campos do tabuleiro para poder fazer o jogo
-            for (int q = 0; q < dificuldade + 4; q++) {
+            for (int q = 0; q < 5; q++) {
                 setSudoku(numeroMenor(), numeroMenor(), 0);
                 setSudoku(numeroMenor(), numeroMenor() + 3, 0);
                 setSudoku(numeroMenor(), numeroMenor() + 6, 0);
@@ -2645,7 +2674,7 @@ public class Sudoku extends javax.swing.JFrame {
                 refazer = false;
             } else {
                 refazer = true;
-                System.out.print("\nInsolúvel: ");
+                System.out.print("\n\nCRIOU INSOLÚVEL: ");
                 debug();
 
                 for (int i = 0; i < 9; i++) {
@@ -2713,57 +2742,49 @@ public class Sudoku extends javax.swing.JFrame {
     //aki eh onde entra o meu codigo
     public void gerar() {
         for (int l = 1; l < 10; l++) {
-            int cont_sup = 0;
 
             boolean l_ok = false;
+            int cont = 0;
+
             while (l_ok == false) {
                 l_ok = true;
 
                 for (int c = 1; c < 10; c++) {
-                    linha = 1;
-                    int cont = 0;
-
-                    while (coluna + linha != 0) {
-                        setSudoku(l, c, numero());
-                        checar();
-
-                        if (cont == 13 + (l * 2)) {
-                            reset_linha(l);  //reseta a linha (ooohh)
-                            l_ok = false;
-                            checar();
-                            c = 10;
-                        }
-
-                        if ((cont_sup == 300) && (l == 6 || l == 9)) {
-                            reset_linha(l - 2);
-                            reset_linha(l - 1);
-                            reset_linha(l);
-                            l_ok = true;
-                            checar();
-                            c = 10;
-                            l = l - 3;
-                        }
-
-                        if ((cont_sup == 300) && (l == 8)) {
-                            reset_linha(l - 1);
-                            reset_linha(l);
-                            l_ok = true;
-                            checar();
-                            c = 10;
-                            l = l - 3;
-                        }
-
+                    int numero = numero(l, c);
+                    if (numero != 0) {
+                        setSudoku(l, c, numero);
+                    } else if ((cont == 20) && (l == 6 || l == 9)) {
+                        reset_linha(l - 2);
+                        reset_linha(l - 1);
+                        reset_linha(l);
+                        l_ok = true;
+                        c = 10;
+                        l = l - 3;
+                    } else if ((cont == 20) && (l == 8)) {
+                        reset_linha(l - 1);
+                        reset_linha(l);
+                        l_ok = true;
+                        c = 10;
+                        l = l - 3;
+                    } else {
                         cont++;
-                        cont_sup++;
-                        debug();  //fica mostrando o progresso
-                        //debug_show();  //fica mostrando o sudoku
+                        reset_linha(l);  //reseta a linha (ooohh)
+                        l_ok = false;
+                        c = 10;
                     }
+                    debug();
                 }
             }
         }
+
+        checar();
+
+        if (linha + coluna != 0) {
+            System.out.print("\n\nerro\n");
+        }
         //debug_show();     //se quiser ver apenas o resultado final
 
-        doSudoku(dificuldade);
+        doSudoku();
 
         //bloqueia as caxinhas do sudoku onde tem numero
         for (int i = 1; i < 10; i++) {
