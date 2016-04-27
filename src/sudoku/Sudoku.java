@@ -2637,7 +2637,7 @@ public class Sudoku extends javax.swing.JFrame {
     }
 
     //faz o campo do sudoku
-    public void doSudoku() {
+    public void doSudoku(int dificuldade) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 backup_teste[i][j] = getSudoku((i + 1), (j + 1));
@@ -2650,7 +2650,7 @@ public class Sudoku extends javax.swing.JFrame {
 
         do {
             //limpa alguns campos do tabuleiro para poder fazer o jogo
-            for (int q = 0; q < 5; q++) {
+            for (int q = 0; q < dificuldade + 4; q++) {
                 setSudoku(numeroMenor(), numeroMenor(), 0);
                 setSudoku(numeroMenor(), numeroMenor() + 3, 0);
                 setSudoku(numeroMenor(), numeroMenor() + 6, 0);
