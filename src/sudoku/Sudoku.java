@@ -1297,11 +1297,11 @@ public class Sudoku extends javax.swing.JFrame {
                                 .addGap(73, 73, 73))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addGap(69, 69, 69))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel13)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(69, 69, 69))))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel13)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2784,7 +2784,7 @@ public class Sudoku extends javax.swing.JFrame {
         }
         //debug_show();     //se quiser ver apenas o resultado final
 
-        doSudoku();
+        doSudoku(dificuldade);
 
         //bloqueia as caxinhas do sudoku onde tem numero
         for (int i = 1; i < 10; i++) {
